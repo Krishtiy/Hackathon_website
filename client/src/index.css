@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* This is where you can add any custom global styles or animations.
+  The 'animate-fadeIn' class used in the components is defined here.
+*/

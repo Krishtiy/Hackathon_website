@@ -1,0 +1,35 @@
+{
+  "name": "hackathon-2026-backend",
+  "version": "1.0.0",
+  "description": "Backend server for Hackathon 2026 website",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon",
+    "test": "jest",
+    "seed": "node seedAdmin.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-validator": "^7.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.19.3",
+    "morgan": "^1.10.1",
+    "multer": "^2.0.2",
+  "cloudinary": "^1.34.0",
+    "nodemailer": "^7.0.10",
+    "razorpay": "^2.9.6"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "nodemon": "^3.1.10",
+    "supertest": "^7.1.4"
+  },
+  "keywords": []
+}
