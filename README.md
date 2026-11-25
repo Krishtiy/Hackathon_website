@@ -3,7 +3,7 @@
 A production-grade hackathon management system built with the MERN stack, upgraded with high-concurrency infrastructure: Redis caching, BullMQ job queues, sliding-window rate limiting, idempotency guards, MongoDB ACID transactions, and SSE-based real-time streaming.
 
 **Live URLs:**
-- 🌐 **Frontend:** _(Vercel — deploy in progress)_
+- 🌐 **Frontend:** [https://hackathon-website-one-omega.vercel.app](https://hackathon-website-one-omega.vercel.app)
 - ⚡ **Backend API:** [https://hackathon-website-7e35.onrender.com](https://hackathon-website-7e35.onrender.com)
 - 📂 **GitHub:** [https://github.com/Krishtiy/Hackathon_website](https://github.com/Krishtiy/Hackathon_website)
 
