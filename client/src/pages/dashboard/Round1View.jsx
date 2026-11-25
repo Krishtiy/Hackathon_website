@@ -17,7 +17,7 @@ const Round1View = () => {
 
   const fetchHackathonState = async () => {
     try {
-      const stateRes = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/state');
+      const stateRes = await axios.get('https://hackathon-website-7e35.onrender.com/api/state');
       setHackathonState(stateRes.data);
     } catch (error) {
       console.error("Failed to poll state:", error);
@@ -28,14 +28,14 @@ const Round1View = () => {
     try {
       setLoading(true);
 
-      const stateRes = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/state');
+      const stateRes = await axios.get('https://hackathon-website-7e35.onrender.com/api/state');
       setHackathonState(stateRes.data);
 
-      const teamRes = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/teams/myteam');
+      const teamRes = await axios.get('https://hackathon-website-7e35.onrender.com/api/teams/myteam');
       setTeam(teamRes.data);
 
       try {
-        const subRes = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/quiz/my-submission/1');
+        const subRes = await axios.get('https://hackathon-website-7e35.onrender.com/api/quiz/my-submission/1');
         setMySubmission(subRes.data.submission);
         setTotalQuestions(subRes.data.totalQuestions);
       } catch {
@@ -61,7 +61,7 @@ const Round1View = () => {
     }
     
     try {
-      const { data } = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/quiz/start/1');
+      const { data } = await axios.get('https://hackathon-website-7e35.onrender.com/api/quiz/start/1');
       navigate('/quiz/1', { state: { quizData: data } });
     } catch (error) {
       showModal(error.response?.data?.message || 'Failed to start quiz');

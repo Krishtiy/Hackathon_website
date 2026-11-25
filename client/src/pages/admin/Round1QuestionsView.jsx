@@ -21,8 +21,8 @@ const Round1QuestionsView = () => {
       const fetchData = async () => {
         try {
           setLoading(true);
-          const stateRes = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/state');
-          const qRes = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/questions?round=1');
+          const stateRes = await axios.get('https://hackathon-website-7e35.onrender.com/api/state');
+          const qRes = await axios.get('https://hackathon-website-7e35.onrender.com/api/questions?round=1');
 
           setRoundState(stateRes.data);
           setQuestions(qRes.data);
@@ -47,7 +47,7 @@ const Round1QuestionsView = () => {
   const handleCreateQuestion = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://hackathon-backend1-akuo.onrender.com/api/questions', {
+      await axios.post('https://hackathon-website-7e35.onrender.com/api/questions', {
         round: 1,
         title,
         options,
@@ -59,7 +59,7 @@ const Round1QuestionsView = () => {
       setOptions(['', '', '', '']);
       setCorrectOption(0);
 
-      const qRes = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/questions?round=1');
+      const qRes = await axios.get('https://hackathon-website-7e35.onrender.com/api/questions?round=1');
       setQuestions(qRes.data);
 
     } catch (error) {
@@ -71,11 +71,11 @@ const Round1QuestionsView = () => {
     if (!window.confirm("Delete this question?")) return;
 
     try {
-      await axios.delete(`https://hackathon-backend1-akuo.onrender.com
+      await axios.delete(`https://hackathon-website-7e35.onrender.com
 /api/questions/${id}`);
       showModal('Deleted successfully!', 'success');
 
-      const qRes = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/questions?round=1');
+      const qRes = await axios.get('https://hackathon-website-7e35.onrender.com/api/questions?round=1');
       setQuestions(qRes.data);
 
     } catch (error) {
@@ -87,7 +87,7 @@ const Round1QuestionsView = () => {
     if (!window.confirm(`Set Round 1 to "${status}"?`)) return;
 
     try {
-      const { data } = await axios.post('https://hackathon-backend1-akuo.onrender.com/api/state/round1', { status });
+      const { data } = await axios.post('https://hackathon-website-7e35.onrender.com/api/state/round1', { status });
       setRoundState(data);
       showModal(`Round 1 updated to ${status}`, 'success');
 

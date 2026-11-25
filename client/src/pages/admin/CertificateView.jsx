@@ -5,7 +5,7 @@ import Button from '../../components/Button';
 import Card from '../../components/Card';
 
 // 🔥 REUSABLE BASE URL (change this if backend URL changes)
-const API_BASE = "https://hackathon-backend1-akuo.onrender.com";
+const API_BASE = "https://hackathon-website-7e35.onrender.com";
 
 const CertificateView = () => {
   const { user, showModal } = useAppContext();

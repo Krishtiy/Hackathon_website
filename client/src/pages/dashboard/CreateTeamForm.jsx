@@ -15,10 +15,10 @@ const CreateTeamForm = () => {
     }
 
     try {
-      await axios.post('https://hackathon-backend1-akuo.onrender.com/api/teams', { name: teamName });
+      await axios.post('https://hackathon-website-7e35.onrender.com/api/teams', { name: teamName });
 
       // Fetch updated profile
-      const { data } = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/auth/profile');
+      const { data } = await axios.get('https://hackathon-website-7e35.onrender.com/api/auth/profile');
       const token = localStorage.getItem('token');
       login(token, data);
 

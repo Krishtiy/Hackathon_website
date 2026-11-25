@@ -11,7 +11,7 @@ const TeamPaymentsView = () => {
   const fetchTeams = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/teams');
+      const { data } = await axios.get('https://hackathon-website-7e35.onrender.com/api/teams');
       setTeams(data);
     } catch (error) {
       showModal(error.response?.data?.message || 'Failed to fetch teams');
@@ -26,7 +26,7 @@ const TeamPaymentsView = () => {
 
   const handleVerify = async (teamId) => {
     try {
-      await axios.post(`https://hackathon-backend1-akuo.onrender.com
+      await axios.post(`https://hackathon-website-7e35.onrender.com
 /api/teams/${teamId}/verify-payment`);
       showModal('Payment verified!', 'success');
       setTeams(prev =>
@@ -44,7 +44,7 @@ const TeamPaymentsView = () => {
       return;
 
     try {
-      await axios.delete(`https://hackathon-backend1-akuo.onrender.com
+      await axios.delete(`https://hackathon-website-7e35.onrender.com
 /api/teams/${teamId}`);
       showModal('Team deleted successfully', 'success');
       setTeams(prev => prev.filter(team => team._id !== teamId));
@@ -113,7 +113,7 @@ const TeamPaymentsView = () => {
                 <td className="px-4 py-3 text-sm text-[#00eaff]">
                   {team.paymentProof ? (
                     <a
-                      href={`https://hackathon-backend1-akuo.onrender.com
+                      href={`https://hackathon-website-7e35.onrender.com
 /${team.paymentProof.replace(/\\/g, '/')}`}
                       target="_blank"
                       rel="noopener noreferrer"

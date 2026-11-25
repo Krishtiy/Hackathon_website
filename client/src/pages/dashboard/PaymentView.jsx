@@ -14,7 +14,7 @@ const PaymentView = () => {
   useEffect(() => {
     const fetchMyTeam = async () => {
       try {
-        const { data } = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/teams/myteam');
+        const { data } = await axios.get('https://hackathon-website-7e35.onrender.com/api/teams/myteam');
         setTeam(data);
       } catch (error) {
         showModal(error.response?.data?.message || 'Could not fetch team details');
@@ -41,7 +41,7 @@ const PaymentView = () => {
 
     try {
       const { data } = await axios.post(
-        'https://hackathon-backend1-akuo.onrender.com/api/payments/submit-proof',
+        'https://hackathon-website-7e35.onrender.com/api/payments/submit-proof',
         formData,
         { headers: { 'Content-Type': 'multipart/form-data' } }
       );

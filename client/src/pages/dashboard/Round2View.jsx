@@ -25,14 +25,14 @@ const Round2View = () => {
         try {
           setLoading(true);
 
-          const stateRes = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/state');
+          const stateRes = await axios.get('https://hackathon-website-7e35.onrender.com/api/state');
           setHackathonState(stateRes.data);
 
-          const teamRes = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/teams/myteam');
+          const teamRes = await axios.get('https://hackathon-website-7e35.onrender.com/api/teams/myteam');
           setTeam(teamRes.data);
 
           if (stateRes.data.round1Status === 'Completed') {
-            const resultsRes = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/teams/results/1');
+            const resultsRes = await axios.get('https://hackathon-website-7e35.onrender.com/api/teams/results/1');
             const rankedTeams = resultsRes.data;
             const cutoff = Math.ceil(rankedTeams.length * 0.3);
 
@@ -43,7 +43,7 @@ const Round2View = () => {
           if (stateRes.data.round2Status === 'Active') {
             try {
               const problemRes = await axios.get(
-                'https://hackathon-backend1-akuo.onrender.com/api/questions?round=2'
+                'https://hackathon-website-7e35.onrender.com/api/questions?round=2'
               );
               if (problemRes.data.length > 0) setProblem(problemRes.data[0]);
             } catch {}
@@ -51,7 +51,7 @@ const Round2View = () => {
 
           try {
             const subRes = await axios.get(
-              'https://hackathon-backend1-akuo.onrender.com/api/submissions/myteam/2'
+              'https://hackathon-website-7e35.onrender.com/api/submissions/myteam/2'
             );
             setMySubmission(subRes.data);
           } catch {}
@@ -82,7 +82,7 @@ const Round2View = () => {
 
     try {
       const { data } = await axios.post(
-        'https://hackathon-backend1-akuo.onrender.com/api/submissions/round2',
+        'https://hackathon-website-7e35.onrender.com/api/submissions/round2',
         formData,
         { headers: { 'Content-Type': 'multipart/form-data' } }
       );

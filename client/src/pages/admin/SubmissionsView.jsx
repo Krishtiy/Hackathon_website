@@ -15,7 +15,7 @@ const SubmissionsView = () => {
       const fetchSubmissions = async () => {
         try {
           setLoading(true);
-          const { data } = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/submissions/round/2');
+          const { data } = await axios.get('https://hackathon-website-7e35.onrender.com/api/submissions/round/2');
           setSubmissions(data);
         } catch (error) {
           showModal(error.response?.data?.message || 'Failed to fetch submissions');
@@ -31,7 +31,7 @@ const SubmissionsView = () => {
     if (!window.confirm("Advance this team to Finale?")) return;
 
     try {
-      await axios.post(`https://hackathon-backend1-akuo.onrender.com
+      await axios.post(`https://hackathon-website-7e35.onrender.com
 /api/teams/${teamId}/advance`);
       showModal('Team advanced to finale!', 'success');
 
@@ -136,7 +136,7 @@ const SubmissionsView = () => {
                   {/* DOWNLOAD */}
                   <td className="px-4 py-3 whitespace-nowrap text-sm">
                     <a
-                      href={`https://hackathon-backend1-akuo.onrender.com
+                      href={`https://hackathon-website-7e35.onrender.com
 /${sub.projectZipFile.replace(/\\/g, '/')}`}
                       target="_blank"
                       rel="noopener noreferrer"

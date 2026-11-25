@@ -37,7 +37,7 @@ const RegisterPage = () => {
 
     try {
       await axios.post(
-        'https://hackathon-backend1-akuo.onrender.com/api/auth/register',
+        'https://hackathon-website-7e35.onrender.com/api/auth/register',
         { name, email, college, phone, password }
       );
 

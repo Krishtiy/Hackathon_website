@@ -14,7 +14,7 @@ const Round1ResultsView = () => {
       const fetchResults = async () => {
         try {
           setLoading(true);
-          const { data } = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/teams/results/1');
+          const { data } = await axios.get('https://hackathon-website-7e35.onrender.com/api/teams/results/1');
           setRankedTeams(data);
         } catch (error) {
           showModal(error.response?.data?.message || 'Failed to fetch results');

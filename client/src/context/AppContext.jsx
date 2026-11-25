@@ -44,7 +44,7 @@ export const AppProvider = ({ children }) => {
       if (token) {
         try {
           // If we have a token, get the user's profile
-          const { data } = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/auth/profile');
+          const { data } = await axios.get('https://hackathon-website-7e35.onrender.com/api/auth/profile');
           setUser(data); // Save the user data
         } catch (error) {
           // If token is invalid, log them out

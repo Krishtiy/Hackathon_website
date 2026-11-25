@@ -23,11 +23,11 @@ const Round2SettingsView = () => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const stateRes = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/state');
+      const stateRes = await axios.get('https://hackathon-website-7e35.onrender.com/api/state');
       setRoundState(stateRes.data);
 
       try {
-        const pRes = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/questions?round=2');
+        const pRes = await axios.get('https://hackathon-website-7e35.onrender.com/api/questions?round=2');
         if (pRes.data.length > 0) {
           const p = pRes.data[0];
           setProblem(p);
@@ -50,7 +50,7 @@ const Round2SettingsView = () => {
     if (!window.confirm(`Set Round 2 to "${status}" ?`)) return;
 
     try {
-      const { data } = await axios.post("https://hackathon-backend1-akuo.onrender.com/api/state/round2", { status });
+      const { data } = await axios.post("https://hackathon-website-7e35.onrender.com/api/state/round2", { status });
       setRoundState(data);
       showModal(`Round 2 is now ${status}`, "success");
     } catch (error) {
@@ -73,10 +73,10 @@ const Round2SettingsView = () => {
 
     try {
       if (problem) {
-        await axios.put(`https://hackathon-backend1-akuo.onrender.com/api/questions/${problem._id}`, payload);
+        await axios.put(`https://hackathon-website-7e35.onrender.com/api/questions/${problem._id}`, payload);
         showModal("Problem Updated Successfully!", "success");
       } else {
-        await axios.post("https://hackathon-backend1-akuo.onrender.com/api/questions", payload);
+        await axios.post("https://hackathon-website-7e35.onrender.com/api/questions", payload);
         showModal("Problem Created Successfully!", "success");
       }
 

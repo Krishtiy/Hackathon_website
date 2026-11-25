@@ -17,11 +17,11 @@ const ResultsView = () => {
       const fetchResultsData = async () => {
         try {
           setLoading(true);
-          const stateRes = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/state');
+          const stateRes = await axios.get('https://hackathon-website-7e35.onrender.com/api/state');
           setHackathonState(stateRes.data);
 
           if (stateRes.data.round1Status === 'Completed') {
-            const resultsRes = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/teams/results/1');
+            const resultsRes = await axios.get('https://hackathon-website-7e35.onrender.com/api/teams/results/1');
             setRankedTeams(resultsRes.data);
           }
         } catch (error) {
@@ -40,7 +40,7 @@ const ResultsView = () => {
 
     try {
       const response = await axios.get(
-        `https://hackathon-backend1-akuo.onrender.com
+        `https://hackathon-website-7e35.onrender.com
 /api/download?filepath=${path.replace(/\\/g, '/')}`,
         { responseType: 'blob' }
       );

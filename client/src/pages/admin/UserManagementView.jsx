@@ -11,7 +11,7 @@ const UserManagementView = () => {
     const fetchUsers = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/auth/users');
+        const { data } = await axios.get('https://hackathon-website-7e35.onrender.com/api/auth/users');
         setUsers(data);
       } catch (error) {
         const message = error.response?.data?.message || 'Failed to fetch users';
@@ -27,7 +27,7 @@ const UserManagementView = () => {
     if (!window.confirm('Are you sure? This action cannot be undone.')) return;
 
     try {
-      await axios.delete(`https://hackathon-backend1-akuo.onrender.com
+      await axios.delete(`https://hackathon-website-7e35.onrender.com
 /api/auth/users/${userId}`);
       showModal('User removed successfully', 'success');
       setUsers(prev => prev.filter(u => u._id !== userId));

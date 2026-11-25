@@ -23,7 +23,7 @@ const TeamView = () => {
     if (user.teamId) {
       const fetchMyTeam = async () => {
         try {
-          const { data } = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/teams/myteam');
+          const { data } = await axios.get('https://hackathon-website-7e35.onrender.com/api/teams/myteam');
           setTeam(data);
         } catch (error) {
           showModal(error.response?.data?.message || 'Could not fetch team details');
@@ -42,9 +42,9 @@ const TeamView = () => {
     if (!teamName) return showModal("Please enter a team name.");
 
     try {
-      await axios.post('https://hackathon-backend1-akuo.onrender.com/api/teams', { name: teamName });
+      await axios.post('https://hackathon-website-7e35.onrender.com/api/teams', { name: teamName });
 
-      const { data } = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/auth/profile');
+      const { data } = await axios.get('https://hackathon-website-7e35.onrender.com/api/auth/profile');
       const token = localStorage.getItem('token');
       login(token, data);
 
@@ -60,7 +60,7 @@ const TeamView = () => {
 
     try {
       const { data } = await axios.post(
-        `https://hackathon-backend1-akuo.onrender.com/api/teams/${team._id}/members`,
+        `https://hackathon-website-7e35.onrender.com/api/teams/${team._id}/members`,
         { email }
       );
 

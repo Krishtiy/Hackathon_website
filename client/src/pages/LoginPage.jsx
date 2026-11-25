@@ -20,7 +20,7 @@ const LoginPage = () => {
 
     try {
       const response = await axios.post(
-        'https://hackathon-backend1-akuo.onrender.com/api/auth/login',
+        'https://hackathon-website-7e35.onrender.com/api/auth/login',
         { email, password }
       );
 

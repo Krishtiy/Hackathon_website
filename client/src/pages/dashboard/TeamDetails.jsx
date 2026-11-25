@@ -12,7 +12,7 @@ const TeamDetails = () => {
   useEffect(() => {
     const fetchMyTeam = async () => {
       try {
-        const { data } = await axios.get('https://hackathon-backend1-akuo.onrender.com/api/teams/myteam');
+        const { data } = await axios.get('https://hackathon-website-7e35.onrender.com/api/teams/myteam');
         setTeam(data);
       } catch (error) {
         showModal(error.response?.data?.message || 'Could not fetch team details');
@@ -33,7 +33,7 @@ const TeamDetails = () => {
     
     try {
       const { data } = await axios.post(
-        `https://hackathon-backend1-akuo.onrender.com
+        `https://hackathon-website-7e35.onrender.com
 /api/teams/${team._id}/members`,
         { email }
       );
