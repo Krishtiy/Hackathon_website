@@ -37,10 +37,24 @@ app.use((req, res) => {
 // Global error handler
 app.use(require('./middlewares/errorHandler'));
 
-// MongoDB
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log("✅ Connected to MongoDB Atlas"))
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
+// MongoDB connection with production retry handling & keep-alive
+const connectMongoDB = async () => {
+  const uri = process.env.MONGODB_URI;
+  if (!uri) {
+    console.error("❌ MONGODB_URI is not defined in environment variables!");
+    return;
+  }
+  try {
+    await mongoose.connect(uri, {
+      serverSelectionTimeoutMS: 15000,
+    });
+    console.log("✅ Connected to MongoDB Atlas");
+  } catch (err) {
+    console.error("❌ MongoDB connection error:", err.message || err);
+  }
+};
+
+connectMongoDB();
 
 const PORT = process.env.PORT || 5000;
 if (process.env.NODE_ENV !== 'test') {
