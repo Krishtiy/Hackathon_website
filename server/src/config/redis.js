@@ -4,8 +4,9 @@ const Redis = require('ioredis');
 // Clean connection URL by trimming any accidental outer quotes or whitespace
 const rawUrl = (process.env.REDIS_URL || 'redis://localhost:6379').replace(/^["']|["']$/g, '').trim();
 
+// BullMQ and Redis standard connection requires maxRetriesPerRequest: null
 const redis = new Redis(rawUrl, {
-  maxRetriesPerRequest: 10,
+  maxRetriesPerRequest: null,
   retryStrategy(times) {
     return Math.min(times * 100, 3000);
   },
