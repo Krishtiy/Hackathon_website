@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Team = require('../models/Team');
 const User = require('../models/User');
 
@@ -33,36 +34,56 @@ const getTeamById = async (req, res) => {
   }
 };
 
-// Add member to team by email (only leader)
+// Add member to team by email (only leader, race-condition protected with atomic check)
 const addMember = async (req, res) => {
+  const session = await mongoose.startSession();
   try {
+    session.startTransaction();
     const { email } = req.body;
-    const team = await Team.findById(req.params.id);
-    if (!team) return res.status(404).json({ message: 'Team not found' });
+    const teamId = req.params.id;
 
-    if (team.leader.toString() !== req.user._id.toString()) {
-      return res.status(401).json({ message: 'Not authorized' });
+    const newMember = await User.findOne({ email }).session(session);
+    if (!newMember) {
+      await session.abortTransaction();
+      return res.status(404).json({ message: 'User not found' });
     }
-    
-    if (team.members.length >= 3) {
-      return res.status(400).json({ message: 'Team is already full (max 3 members)' });
+    if (newMember.teamId) {
+      await session.abortTransaction();
+      return res.status(400).json({ message: 'User already in a team' });
     }
 
-    const newMember = await User.findOne({ email });
-    if (!newMember) return res.status(404).json({ message: 'User not found' });
-    if (newMember.teamId) return res.status(400).json({ message: 'User already in a team' });
+    // ATOMIC ENGINE-LEVEL CAPACITY CHECK:
+    // Only succeeds if leader matches AND member array size is strictly < 3
+    const updatedTeam = await Team.findOneAndUpdate(
+      {
+        _id: teamId,
+        leader: req.user._id,
+        $expr: { $lt: [{ $size: '$members' }, 3] }
+      },
+      { $push: { members: newMember._id } },
+      { new: true, session }
+    );
 
-    team.members.push(newMember._id);
-    await team.save();
+    if (!updatedTeam) {
+      await session.abortTransaction();
+      return res.status(400).json({
+        message: 'Team is already full (max 3 members) or unauthorized action'
+      });
+    }
 
-    newMember.teamId = team._id;
-    await newMember.save();
-    
-    const populatedTeam = await Team.findById(team._id).populate('members', 'name email');
+    newMember.teamId = updatedTeam._id;
+    await newMember.save({ session });
+
+    await session.commitTransaction();
+
+    const populatedTeam = await Team.findById(updatedTeam._id).populate('members', 'name email');
     res.json(populatedTeam);
   } catch (error) {
+    await session.abortTransaction();
     console.error('addMember error', error);
     res.status(500).json({ message: 'Server error' });
+  } finally {
+    session.endSession();
   }
 };
 

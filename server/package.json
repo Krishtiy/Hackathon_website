@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^3.0.3",
+    "cloudinary": "^1.34.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
@@ -22,11 +23,16 @@
     "mongoose": "^8.19.3",
     "morgan": "^1.10.1",
     "multer": "^2.0.2",
-  "cloudinary": "^1.34.0",
     "nodemailer": "^7.0.10",
     "razorpay": "^2.9.6"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.1176.0",
+    "@aws-sdk/s3-request-presigner": "^3.1176.0",
+    "autocannon": "^9.0.0",
+    "bullmq": "^6.7.9",
+    "ioredis": "^5.11.1",
+    "ioredis-mock": "^8.13.1",
     "jest": "^30.2.0",
     "nodemon": "^3.1.10",
     "supertest": "^7.1.4"
