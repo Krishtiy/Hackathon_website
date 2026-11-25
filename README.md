@@ -1,4 +1,4 @@
-# 🚀 Hackathon 2026 — Full-Stack Management Platform
+# 🚀 Hackathon 2026 : Full-Stack Management Platform
 
 A production-grade hackathon management system built with the MERN stack, upgraded with high-concurrency infrastructure: Redis caching, BullMQ job queues, sliding-window rate limiting, idempotency guards, MongoDB ACID transactions, and SSE-based real-time streaming.
 
