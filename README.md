@@ -1,12 +1,5 @@
 # **Hackathon 2026 – Full Stack Web Application**
 
-### **Assignment Submission Report**
-
-**Submitted by:** *Gaurav Ghosh, CSE, NIT Silchar*
-
-
-**Backend Development & API Implementation:** *Arghojit Dewanji, CSE, NIT Silchar*
-
 
 **Live Website:** [https://hackathon-frontend1-iy6j.onrender.com](https://hackathon-frontend1-iy6j.onrender.com)
 
@@ -68,7 +61,7 @@ The project follows a **client–server architecture**:
 * Components for forms, dashboards, quizzes, etc.
 * TailwindCSS + custom design
 
-### **Backend (Server) – Node + Express**  *(Developed by Arghojit Dewanji)*
+### **Backend (Server) – Node + Express**  *(Developed by Krishti singh)*
 
 The backend layer was implemented to handle the core business logic and system security.
 
